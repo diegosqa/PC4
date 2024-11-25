@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  user_management:
+    build:
+      context: ./user_management
+    volumes:
+      - ./user_management:/app
+    ports:
+      - "5001:5001"
+    command: python src/UserController.py
+    environment:
+      PYTHONPATH: "/app/src"
+
+  product_catalog:
+    build:
+      context: ./product_catalog
+    volumes:
+      - ./product_catalog:/app
+    ports:
+      - "5002:5002"
+    command: python src/ProductController.py
+    environment:
+      PYTHONPATH: "/app/src"
+
+
